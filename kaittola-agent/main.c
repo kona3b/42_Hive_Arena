@@ -35,8 +35,49 @@ command_t think(agent_info_t info)
                 .direction = hive_dir
             };
         }
-    }
-    else
+		else if (info.row > 13)
+		{
+			if (info.col > 2)
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = 7
+				};
+			}
+			else
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = 0
+				};
+			}
+		}
+		else if (info.row < 11)
+		{
+			if (info.col > 2)
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = 5
+				};
+			}
+			else
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = 4
+				};
+			}
+		}
+		else
+		{
+			return (command_t) {
+				.action = MOVE,
+				.direction = 6
+			};
+		}
+	}
+	else
     {
         int flower_dir = find_neighbour(info, FLOWER);
         if (flower_dir >= 0)
@@ -63,7 +104,7 @@ int main(int argc, char **argv)
 
     char *host = argv[1];
     int port = atoi(argv[2]);
-    char *team_name = "example_agent";
+    char *team_name = "kaittola_agent";
 
     agent_main(host, port, team_name, think);
 }
