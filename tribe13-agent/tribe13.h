@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include "agent.h"
 
-int	check_if_type(agent_info_t info, int dir, int type);
-command_t back_to_hive(agent_info_t info);
 #define EMPTY 0
 #define B0 1
 #define B1 2
@@ -16,3 +14,6 @@ command_t back_to_hive(agent_info_t info);
 #define HIVE_0 7
 #define HIVE_1 8
 #define OUT 9
+
+int	check_if_type(agent_info_t info, int dir, int type);
+command_t back_to_hive(agent_info_t info);
