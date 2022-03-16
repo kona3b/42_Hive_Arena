@@ -3,7 +3,9 @@ CFLAGS=-Wall -Wextra -O3 -flto
 CPPFLAGS=-I../src
 LDFLAGS=-flto -L../bin -lagent
 
-OBJS =	main.o
+OBJS =	main.o \
+		back_to_hive.o \
+		check_if_type.o
 
 NAME=agent
 

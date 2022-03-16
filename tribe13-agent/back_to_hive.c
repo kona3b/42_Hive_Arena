@@ -1,6 +1,4 @@
-#include <stdlib.h>
-#include "agent.h"
-#include "check_if_free.c"
+#include "./tribe13.h"
 
 command_t back_to_hive(agent_info_t info)
 {
@@ -10,14 +8,14 @@ command_t back_to_hive(agent_info_t info)
 		{
 			if (info.col > 2)
 			{
-				if (check_if_free(info, 7) == 1)
+				if (check_if_type(info, 7, 0) == 1)
 				{
 					return (command_t) {
 						.action = MOVE,
 						.direction = 7
 					};
 				}
-				else if (check_if_free(info, 0) == 1)
+				else if (check_if_type(info, 0, 0) == 1)
 				{
 					return (command_t) {
 						.action = MOVE,
@@ -32,14 +30,14 @@ command_t back_to_hive(agent_info_t info)
 					};
 				}
 			}
-			else if (check_if_free(info, 0) == 1)
+			else if (check_if_type(info, 0, 0) == 1)
 			{
 				return (command_t) {
 					.action = MOVE,
 					.direction = 0
 				};
 			}
-			else if (check_if_free(info, 7) == 1 && info.col > 0)
+			else if (check_if_type(info, 7, 0) == 1 && info.col > 0)
 			{
 				return (command_t) {
 					.action = MOVE,
@@ -58,14 +56,14 @@ command_t back_to_hive(agent_info_t info)
 		{
 			if (info.col > 2)
 			{
-				if (check_if_free(info, 5) == 1)
+				if (check_if_type(info, 5, 0) == 1)
 				{
 					return (command_t) {
 						.action = MOVE,
 						.direction = 5
 					};
 				}
-				else if (check_if_free(info, 4) == 1)
+				else if (check_if_type(info, 4, 0) == 1)
 				{
 					return (command_t) {
 						.action = MOVE,
@@ -80,14 +78,14 @@ command_t back_to_hive(agent_info_t info)
 					};
 				}
 			}
-			else if (check_if_free(info, 4) == 1)
+			else if (check_if_type(info, 4, 0) == 1)
 			{
 				return (command_t) {
 					.action = MOVE,
 					.direction = 4
 				};
 			}
-			else if (check_if_free(info, 5) == 1 && info.col > 0)
+			else if (check_if_type(info, 5, 0) == 1 && info.col > 0)
 			{
 				return (command_t) {
 					.action = MOVE,
@@ -102,14 +100,14 @@ command_t back_to_hive(agent_info_t info)
 				};
 			}
 		}
-		else if (check_if_free(info, 6) == 1)
+		else if (check_if_type(info, 6, 0) == 1)
 		{
 			return (command_t) {
 				.action = MOVE,
 				.direction = 6
 			};
 		}
-		else if (check_if_free(info, 7) == 1)
+		else if (check_if_type(info, 7, 0) == 1)
 		{
 			return (command_t) {
 				.action = MOVE,
@@ -130,14 +128,14 @@ command_t back_to_hive(agent_info_t info)
 		{
 			if (info.col < 27)
 			{
-				if (check_if_free(info, 1) == 1)
+				if (check_if_type(info, 1, 0) == 1)
 				{
 					return (command_t) {
 						.action = MOVE,
 						.direction = 1
 					};
 				}
-				else if (check_if_free(info, 0) == 1)
+				else if (check_if_type(info, 0, 0) == 1)
 				{
 					return (command_t) {
 						.action = MOVE,
@@ -152,14 +150,14 @@ command_t back_to_hive(agent_info_t info)
 					};
 				}
 			}
-			else if (check_if_free(info, 0) == 1)
+			else if (check_if_type(info, 0, 0) == 1)
 			{
 				return (command_t) {
 					.action = MOVE,
 					.direction = 0
 				};
 			}
-			else if (check_if_free(info, 1) == 1 && info.col < 29)
+			else if (check_if_type(info, 1, 0) == 1 && info.col < 29)
 			{
 				return (command_t) {
 					.action = MOVE,
@@ -178,14 +176,14 @@ command_t back_to_hive(agent_info_t info)
 		{
 			if (info.col < 27)
 			{
-				if (check_if_free(info, 3) == 1)
+				if (check_if_type(info, 3, 0) == 1)
 				{
 					return (command_t) {
 						.action = MOVE,
 						.direction = 3
 					};
 				}
-				else if (check_if_free(info, 4) == 1)
+				else if (check_if_type(info, 4, 0) == 1)
 				{
 					return (command_t) {
 						.action = MOVE,
@@ -200,14 +198,14 @@ command_t back_to_hive(agent_info_t info)
 					};
 				}
 			}
-			else if (check_if_free(info, 4) == 1)
+			else if (check_if_type(info, 4, 0) == 1)
 			{
 				return (command_t) {
 					.action = MOVE,
 					.direction = 4
 				};
 			}
-			else if (check_if_free(info, 3) == 1 && info.col < 29)
+			else if (check_if_type(info, 3, 0) == 1 && info.col < 29)
 			{
 				return (command_t) {
 					.action = MOVE,
@@ -222,14 +220,14 @@ command_t back_to_hive(agent_info_t info)
 				};
 			}
 		}
-		else if (check_if_free(info, 2) == 1)
+		else if (check_if_type(info, 2, 0) == 1)
 		{
 			return (command_t) {
 				.action = MOVE,
 				.direction = 2
 			};
 		}
-		else if (check_if_free(info, 1) == 1)
+		else if (check_if_type(info, 1, 0) == 1)
 		{
 			return (command_t) {
 				.action = MOVE,

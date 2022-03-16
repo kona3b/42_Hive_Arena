@@ -1,9 +1,4 @@
-#include <time.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "agent.h"
-#include "back_to_hive.c"
+#include "./tribe13.h"
 
 int find_neighbour(agent_info_t info, cell_t type)
 {
