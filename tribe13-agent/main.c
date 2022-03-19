@@ -38,7 +38,7 @@ command_t think(agent_info_t info)
 	else
 	{
 		int flower_dir = find_neighbour(info, FLOWER);
-		if (flower_dir >= 0)
+		if (flower_dir >= 0 && info.bee != 2)
 		{
 			return (command_t) {
 				.action = FORAGE,
@@ -46,18 +46,7 @@ command_t think(agent_info_t info)
 			};
 		}
 		else
-		{
-			int enemy_dir = find_neighbour(info, B1_WF);
-			if (enemy_dir >= 0)
-			{
-				return (command_t) {
-					.action = GUARD,
-					.direction = enemy_dir
-				};
-			}
-			else
-				return (search_for_objects(info));
-		}
+			return (search_for_objects(info));
 	}
 	return (command_t) {
 		.action = MOVE,
