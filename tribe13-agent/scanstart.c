@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   scanstart.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: kaittola <kaittola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 11:30:41 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/16 11:52:00 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/03/19 00:06:40 by kaittola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "agent.h"
+#include "tribe13.h"
 
 typedef	struct s_scanstart {
 	int	y;

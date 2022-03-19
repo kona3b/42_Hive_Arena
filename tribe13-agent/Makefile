@@ -5,7 +5,8 @@ LDFLAGS=-flto -L../bin -lagent
 
 OBJS =	main.o \
 		back_to_hive.o \
-		check_if_type.o
+		check_if_type.o \
+		search_for_objects.o
 
 NAME=agent
 

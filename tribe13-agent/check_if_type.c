@@ -1,4 +1,4 @@
-#include "./tribe13.h"
+#include "tribe13.h"
 
 int	check_if_type(agent_info_t info, int dir, int type)
 {

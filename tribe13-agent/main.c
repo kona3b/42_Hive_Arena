@@ -1,4 +1,4 @@
-#include "./tribe13.h"
+#include "tribe13.h"
 
 int find_neighbour(agent_info_t info, cell_t type)
 {
@@ -45,8 +45,20 @@ command_t think(agent_info_t info)
 				.direction = flower_dir
 			};
 		}
+		else
+		{
+			int enemy_dir = find_neighbour(info, B1_WF);
+			if (enemy_dir >= 0)
+			{
+				return (command_t) {
+					.action = GUARD,
+					.direction = enemy_dir
+				};
+			}
+			else
+				return (search_for_objects(info));
+		}
 	}
-
 	return (command_t) {
 		.action = MOVE,
 		.direction = rand() % 8

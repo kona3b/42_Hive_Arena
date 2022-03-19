@@ -16,4 +16,6 @@
 #define OUT 9
 
 int	check_if_type(agent_info_t info, int dir, int type);
+int find_neighbour(agent_info_t info, cell_t type);
 command_t back_to_hive(agent_info_t info);
+command_t search_for_objects(agent_info_t info);
