@@ -46,7 +46,7 @@ command_t think(agent_info_t info)
 			};
 		}
 		else
-			return (search_for_objects(info));
+			return (follow_strategy(info));
 	}
 	return (command_t) {
 		.action = MOVE,

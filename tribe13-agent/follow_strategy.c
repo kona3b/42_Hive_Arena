@@ -1,6 +1,6 @@
 #include "tribe13.h"
 
-command_t search_for_objects(agent_info_t info)
+command_t follow_strategy(agent_info_t info)
 {
 	int enemy_dir = find_neighbour(info, B1_WF);
 	int enemy_dir1 = find_neighbour(info, B0_WF);
