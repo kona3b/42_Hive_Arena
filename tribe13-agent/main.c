@@ -6,7 +6,7 @@
 /*   By: kaittola <kaittola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:40:53 by kaittola          #+#    #+#             */
-/*   Updated: 2022/03/20 15:09:10 by kaittola         ###   ########.fr       */
+/*   Updated: 2022/03/20 22:06:47 by kaittola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,104 @@ command_t think(agent_info_t info)
 		flower_dir = find_neighbours(info, FLOWER);
 		if (flower_dir >= 0 && info.bee != 2)
 		{
-			return (command_t) {
-				.action = MOVE,
-				.direction = flower_dir
-			};
+			if (check_if_type(info, flower_dir, EMPTY) == 1)
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = flower_dir
+				};
+			}
+			else if (flower_dir == 0 && check_if_type(info, 7, EMPTY) == 1)
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = 7
+				};
+			}
+			else if (flower_dir == 0 && check_if_type(info, 1, EMPTY) == 1)
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = 1
+				};
+			}
+			else if (flower_dir == 7 && check_if_type(info, 6, EMPTY) == 1)
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = 6
+				};
+			}
+			else if (flower_dir == 6 && check_if_type(info, 0, EMPTY) == 1)
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = 0
+				};
+			}
+			else if (check_if_type(info, flower_dir + 1, EMPTY) == 1)
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = flower_dir + 1
+				};
+			}
+			else if (check_if_type(info, flower_dir - 1, EMPTY) == 1)
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = flower_dir - 1
+				};
+			}
+			else if (check_if_type(info, flower_dir, WALL) == 1)
+			{
+				return (command_t) {
+					.action = GUARD,
+					.direction = flower_dir
+				};
+			}
+			else if (flower_dir == 0 && check_if_type(info, 7, WALL) == 1)
+			{
+				return (command_t) {
+					.action = GUARD,
+					.direction = 7
+				};
+			}
+			else if (flower_dir == 0 && check_if_type(info, 1, WALL) == 1)
+			{
+				return (command_t) {
+					.action = GUARD,
+					.direction = 1
+				};
+			}
+			else if (flower_dir == 7 && check_if_type(info, 6, WALL) == 1)
+			{
+				return (command_t) {
+					.action = GUARD,
+					.direction = 6
+				};
+			}
+			else if (flower_dir == 6 && check_if_type(info, 0, WALL) == 1)
+			{
+				return (command_t) {
+					.action = GUARD,
+					.direction = 0
+				};
+			}
+			else if (check_if_type(info, flower_dir + 1, WALL) == 1)
+			{
+				return (command_t) {
+					.action = GUARD,
+					.direction = flower_dir + 1
+				};
+			}
+			else if (check_if_type(info, flower_dir - 1, WALL) == 1)
+			{
+				return (command_t) {
+					.action = GUARD,
+					.direction = flower_dir - 1
+				};
+			}
 		}
 		else
 			return (follow_strategy(info));
