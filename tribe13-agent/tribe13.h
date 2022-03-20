@@ -24,3 +24,5 @@ int	check_if_type(agent_info_t info, int dir, int type);
 int find_neighbour(agent_info_t info, cell_t type);
 command_t back_to_hive(agent_info_t info);
 command_t follow_strategy(agent_info_t info);
+t_scanstart	scanstart (agent_info_t info);
+dir_t scanner(agent_info_t info);

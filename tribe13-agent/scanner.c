@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:10:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/20 13:39:04 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/03/20 13:47:08 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ static dir_t ft_dir(int y, int x)
 		return(W);
 }
 
-dir_t scanner(agent_t_info info, t_scanstart start)
+dir_t scanner(agent_info_t info)
 {
+	t_scanstart start = scanstart(info);
 	int s_y = start.y;
 	int s_x = start.x;
 	do {
@@ -70,4 +71,5 @@ dir_t scanner(agent_t_info info, t_scanstart start)
 			s_y--;
 		}
 	} while (start.y != s_y && start.x != s_x);
+	return (-1);
 }
