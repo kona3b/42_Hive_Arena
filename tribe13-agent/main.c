@@ -1,29 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kaittola <kaittola@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/20 14:40:53 by kaittola          #+#    #+#             */
+/*   Updated: 2022/03/20 15:09:10 by kaittola         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "tribe13.h"
-
-int find_neighbour(agent_info_t info, cell_t type)
-{
-	coords_t center = {VIEW_DISTANCE, VIEW_DISTANCE};
-
-	for(int dir = 0 ; dir < 8 ; dir++)
-	{
-		coords_t coords = direction_to_coords(center, dir);
-		cell_t neighbour = info.cells[coords.row][coords.col];
-		if (neighbour == type)
-		{
-			return dir;
-		}
-	}
-
-	return -1;
-}
 
 command_t think(agent_info_t info)
 {
 	cell_t bee = info.cells[VIEW_DISTANCE][VIEW_DISTANCE];
+	coords_t center = {3, 3};
 
 	if (is_bee_with_flower(bee))
 	{
-		int hive_dir = find_neighbour(info, hive_cell(info.player));
+		coords_t center = {3, 3};
+		int hive_dir = find_neighbour(info, hive_cell(info.player), center);
 
 		if (hive_dir >= 0)
 		{
@@ -37,11 +34,19 @@ command_t think(agent_info_t info)
 	}
 	else
 	{
-		int flower_dir = find_neighbour(info, FLOWER);
+		int flower_dir = find_neighbour(info, FLOWER, center);
 		if (flower_dir >= 0 && info.bee != 2)
 		{
 			return (command_t) {
 				.action = FORAGE,
+				.direction = flower_dir
+			};
+		}
+		flower_dir = find_neighbours(info, FLOWER);
+		if (flower_dir >= 0 && info.bee != 2)
+		{
+			return (command_t) {
+				.action = MOVE,
 				.direction = flower_dir
 			};
 		}

@@ -2,9 +2,10 @@
 
 command_t follow_strategy(agent_info_t info)
 {
-	int enemy_dir = find_neighbour(info, B1_WF);
-	int enemy_dir1 = find_neighbour(info, B0_WF);
-	int free_dir = find_neighbour(info, EMPTY);
+	coords_t center = {3, 3};
+	int enemy_dir = find_neighbour(info, B1_WF, center);
+	int enemy_dir1 = find_neighbour(info, B0_WF, center);
+	int free_dir = find_neighbour(info, EMPTY, center);
 
 	if (info.player == 0)
 	{
@@ -12,7 +13,7 @@ command_t follow_strategy(agent_info_t info)
 		{
 			if (info.row < 24)
 			{
-				if (info.col < 28)
+				if (info.col < 26)
 				{
 					if (info.row > 3)
 					{
@@ -296,7 +297,7 @@ command_t follow_strategy(agent_info_t info)
 		{
 			if (info.row < 24)
 			{
-				if (info.col < 26)
+				if (info.col < 28)
 				{
 					if (info.row > 10)
 					{
@@ -804,7 +805,7 @@ command_t follow_strategy(agent_info_t info)
 		{
 			if (info.row > 0)
 			{
-				if (info.col < 26)
+				if (info.col < 28)
 				{
 					if (info.row < 14)
 					{
@@ -1088,7 +1089,7 @@ command_t follow_strategy(agent_info_t info)
 		{
 			if (info.row > 0)
 			{
-				if (info.col < 28)
+				if (info.col < 26)
 				{
 					if (info.row < 21)
 					{
@@ -1382,7 +1383,7 @@ command_t follow_strategy(agent_info_t info)
 		{
 			if (info.row < 24)
 			{
-				if (info.col > 1)
+				if (info.col > 3)
 				{
 					if (info.row > 3)
 					{
@@ -1666,7 +1667,7 @@ command_t follow_strategy(agent_info_t info)
 		{
 			if (info.row < 24)
 			{
-				if (info.col > 3)
+				if (info.col > 1)
 				{
 					if (info.row > 10)
 					{
@@ -2174,7 +2175,7 @@ command_t follow_strategy(agent_info_t info)
 		{
 			if (info.row > 0)
 			{
-				if (info.col > 3)
+				if (info.col > 1)
 				{
 					if (info.row < 14)
 					{
@@ -2458,7 +2459,7 @@ command_t follow_strategy(agent_info_t info)
 		{
 			if (info.row > 0)
 			{
-				if (info.col > 1)
+				if (info.col > 3)
 				{
 					if (info.row < 21)
 					{
@@ -2514,18 +2515,18 @@ command_t follow_strategy(agent_info_t info)
 								};
 							}
 						}
-						else if (check_if_type(info, 3, 0) == 1)
-						{
-							return (command_t) {
-								.action = MOVE,
-								.direction = 3
-							};
-						}
 						else if (check_if_type(info, 4, 0) == 1)
 						{
 							return (command_t) {
 								.action = MOVE,
 								.direction = 4
+							};
+						}
+						else if (check_if_type(info, 3, 0) == 1)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 3
 							};
 						}
 						else if (check_if_type(info, 5, 0) == 1)
@@ -2535,18 +2536,18 @@ command_t follow_strategy(agent_info_t info)
 								.direction = 5
 							};
 						}
-						else if (check_if_type(info, 3, 6) == 1 || check_if_type(info, 3, 3) == 1)
-						{
-							return (command_t) {
-								.action = GUARD,
-								.direction = 3
-							};
-						}
 						else if (check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 3) == 1)
 						{
 							return (command_t) {
 								.action = GUARD,
 								.direction = 4
+							};
+						}
+						else if (check_if_type(info, 3, 6) == 1 || check_if_type(info, 3, 3) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 3
 							};
 						}
 						else if (check_if_type(info, 5, 6) == 1 || check_if_type(info, 5, 3) == 1)
@@ -2560,7 +2561,7 @@ command_t follow_strategy(agent_info_t info)
 						{
 							return (command_t) {
 								.action = MOVE,
-								.direction = 3
+								.direction = 4
 							};
 						}
 					}

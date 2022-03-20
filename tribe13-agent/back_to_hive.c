@@ -6,7 +6,7 @@ command_t back_to_hive(agent_info_t info)
 	{
 		if (info.row > 13)
 		{
-			if (info.col > 2)
+			if (info.col > 1)
 			{
 				if (check_if_type(info, 7, 0) == 1)
 				{
@@ -110,7 +110,7 @@ command_t back_to_hive(agent_info_t info)
 		}
 		else if (info.row < 11)
 		{
-			if (info.col > 2)
+			if (info.col > 1)
 			{
 				if (check_if_type(info, 5, 0) == 1)
 				{
@@ -266,7 +266,7 @@ command_t back_to_hive(agent_info_t info)
 	{
 		if (info.row > 13)
 		{
-			if (info.col < 27)
+			if (info.col < 28)
 			{
 				if (check_if_type(info, 1, 0) == 1)
 				{
@@ -370,7 +370,7 @@ command_t back_to_hive(agent_info_t info)
 		}
 		else if (info.row < 11)
 		{
-			if (info.col < 27)
+			if (info.col < 28)
 			{
 				if (check_if_type(info, 3, 0) == 1)
 				{
