@@ -6,13 +6,13 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:10:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/16 12:36:16 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/03/20 13:39:04 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tribe13.h"
 
-static t_dir ft_dir(int y, int x)
+static dir_t ft_dir(int y, int x)
 {
 	if (y < 3 && x < 3)
 		return(NW);
@@ -32,7 +32,7 @@ static t_dir ft_dir(int y, int x)
 		return(W);
 }
 
-t_dir scanner(agent_t_info info, t_scanstart start)
+dir_t scanner(agent_t_info info, t_scanstart start)
 {
 	int s_y = start.y;
 	int s_x = start.x;
