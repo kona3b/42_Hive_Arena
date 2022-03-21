@@ -6,7 +6,7 @@
 /*   By: kaittola <kaittola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:40:53 by kaittola          #+#    #+#             */
-/*   Updated: 2022/03/20 22:06:47 by kaittola         ###   ########.fr       */
+/*   Updated: 2022/03/21 22:29:04 by kaittola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ command_t think(agent_info_t info)
 {
 	cell_t bee = info.cells[VIEW_DISTANCE][VIEW_DISTANCE];
 	coords_t center = {3, 3};
+	int hive_dir = find_neighbour(info, hive_cell(info.player), center);
 
 	if (is_bee_with_flower(bee))
 	{
 		coords_t center = {3, 3};
-		int hive_dir = find_neighbour(info, hive_cell(info.player), center);
 
 		if (hive_dir >= 0)
 		{
@@ -35,7 +35,7 @@ command_t think(agent_info_t info)
 	else
 	{
 		int flower_dir = find_neighbour(info, FLOWER, center);
-		if (flower_dir >= 0 && info.bee != 2)
+		if (flower_dir >= 0 && (info.bee == 4 || info.bee == 0 || hive_dir >= 0))
 		{
 			return (command_t) {
 				.action = FORAGE,
@@ -43,7 +43,7 @@ command_t think(agent_info_t info)
 			};
 		}
 		flower_dir = find_neighbours(info, FLOWER);
-		if (flower_dir >= 0 && info.bee != 2)
+		if (flower_dir >= 0 && (info.bee == 4 || info.bee == 0))
 		{
 			if (check_if_type(info, flower_dir, EMPTY) == 1)
 			{
@@ -162,7 +162,7 @@ int main(int argc, char **argv)
 
 	char *host = argv[1];
 	int port = atoi(argv[2]);
-	char *team_name = "tribe13_agent";
+	char *team_name = "tribe13_agent_2_electric_boogaloo";
 
 	agent_main(host, port, team_name, think);
 }

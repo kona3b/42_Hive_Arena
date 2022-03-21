@@ -233,6 +233,20 @@ command_t back_to_hive(agent_info_t info)
 				.direction = 5
 			};
 		}
+/*		else if (check_if_type(info, 0, 0) == 1)
+		{
+			return (command_t) {
+				.action = MOVE,
+				.direction = 0
+			};
+		}
+		else if (check_if_type(info, 4, 0) == 1)
+		{
+			return (command_t) {
+				.action = MOVE,
+				.direction = 4
+			};
+		}*/
 		else if (check_if_type(info, 6, 6) == 1 || check_if_type(info, 6, 4) == 1)
 		{
 			return (command_t) {
@@ -254,6 +268,20 @@ command_t back_to_hive(agent_info_t info)
 				.direction = 5
 			};
 		}
+/*		else if (check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 4) == 1)
+		{
+			return (command_t) {
+				.action = GUARD,
+				.direction = 0
+			};
+		}
+		else if (check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 4) == 1)
+		{
+			return (command_t) {
+				.action = GUARD,
+				.direction = 4
+			};
+		}*/
 		else
 		{
 			return (command_t) {
@@ -493,6 +521,20 @@ command_t back_to_hive(agent_info_t info)
 				.direction = 3
 			};
 		}
+		else if (check_if_type(info, 0, 0) == 1)
+		{
+			return (command_t) {
+				.action = MOVE,
+				.direction = 0
+			};
+		}
+		else if (check_if_type(info, 4, 0) == 1)
+		{
+			return (command_t) {
+				.action = MOVE,
+				.direction = 4
+			};
+		}
 		else if (check_if_type(info, 2, 6) == 1 || check_if_type(info, 2, 3) == 1)
 		{
 			return (command_t) {
@@ -512,6 +554,20 @@ command_t back_to_hive(agent_info_t info)
 			return (command_t) {
 				.action = GUARD,
 				.direction = 3
+			};
+		}
+		else if (check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 3) == 1)
+		{
+			return (command_t) {
+				.action = GUARD,
+				.direction = 0
+			};
+		}
+		else if (check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 3) == 1)
+		{
+			return (command_t) {
+				.action = GUARD,
+				.direction = 4
 			};
 		}
 		else
