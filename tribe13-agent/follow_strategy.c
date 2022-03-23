@@ -15,7 +15,7 @@ command_t follow_strategy(agent_info_t info)
 			{
 				if (info.col < 26)
 				{
-					if (info.col < 10 || info.col > 17)
+					if (info.col < 10 || info.col >= 17)
 					{
 						if (info.row > 3)
 						{
@@ -42,18 +42,18 @@ command_t follow_strategy(agent_info_t info)
 										.direction = 7
 									};
 								}
-								else if (check_if_type(info, 1, 6) == 1 || check_if_type(info, 1, 4) == 1)
-								{
-									return (command_t) {
-										.action = GUARD,
-										.direction = 1
-									};
-								}
 								else if (check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 4) == 1)
 								{
 									return (command_t) {
 										.action = GUARD,
 										.direction = 0
+									};
+								}
+								else if (check_if_type(info, 1, 6) == 1 || check_if_type(info, 1, 4) == 1)
+								{
+									return (command_t) {
+										.action = GUARD,
+										.direction = 1
 									};
 								}
 								else if (check_if_type(info, 7, 6) == 1 || check_if_type(info, 7, 4) == 1)
@@ -173,8 +173,57 @@ command_t follow_strategy(agent_info_t info)
 								};
 							}
 						}
+						else if (check_if_type(info, 2, 0) == 1)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 2
+							};
+						}
+						else if (check_if_type(info, 1, 0) == 1)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 1
+							};
+						}
+						else if (check_if_type(info, 3, 0) == 3)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 3
+							};
+						}
+						else if (check_if_type(info, 2, 6) == 1 || check_if_type(info, 2, 4) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 2
+							};
+						}
+						else if (check_if_type(info, 1, 6) == 1 || check_if_type(info, 1, 4) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 1
+							};
+						}
+						else if (check_if_type(info, 3, 6) == 1 || check_if_type(info, 3, 4) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 3
+							};
+						}
+						else
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 2
+							};
+						}
 					}
-					if (info.col == 10 && info.row < 8)
+					else if (info.col == 10 && info.row < 21)
 					{
 						if (check_if_type(info, 4, 0) == 1)
 						{
@@ -183,7 +232,7 @@ command_t follow_strategy(agent_info_t info)
 								.direction = 4
 							};
 						}
-						if (check_if_type(info, 4, 6) == 1)
+						else if (check_if_type(info, 4, 6) == 1)
 						{
 							return (command_t) {
 								.action = GUARD,
@@ -191,13 +240,13 @@ command_t follow_strategy(agent_info_t info)
 							};
 						}
 					}
-					else if (info.col >= 10 && info.col <= 17 && info.row == 8)
+					else if (info.col >= 10 && info.col < 17 && info.row == 21)
 					{
 						if (check_if_type(info, 2, 0) == 1)
 						{
-						return (command_t) {
-							.action = MOVE,
-							.direction = 2
+							return (command_t) {
+								.action = MOVE,
+								.direction = 2
 						};
 						}
 						if (check_if_type(info, 2, 6) == 1)
@@ -258,14 +307,14 @@ command_t follow_strategy(agent_info_t info)
 						};
 					}
 				}
-				else if (check_if_type(info, 4, 0) == 1 && info.row < 9)
+				else if (check_if_type(info, 4, 0) == 1 && info.row < 10)
 				{
 					return (command_t) {
 						.action = MOVE,
 						.direction = 4
 					};
 				}
-				else if ((check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 4) == 1) && info.row < 9)
+				else if ((check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 4) == 1) && info.row < 10)
 				{
 					return (command_t) {
 						.action = GUARD,
@@ -750,7 +799,7 @@ command_t follow_strategy(agent_info_t info)
 						};
 					}
 				}
-				else
+				else if (info.row == 12)
 				{
 					if (check_if_type(info, 2, 0) == 1)
 					{
@@ -795,6 +844,13 @@ command_t follow_strategy(agent_info_t info)
 						};
 					}
 				}
+				else
+				{
+					return (command_t) {
+						.action = MOVE,
+						.direction = rand() % 8
+					};
+				}
 			}
 			else if (info.col == 27)
 			{
@@ -824,18 +880,52 @@ command_t follow_strategy(agent_info_t info)
 				}
 				else if (info.row < 12)
 				{
-					return (command_t) {
-						.action = MOVE,
-						.direction = 4
-					};
+					if (check_if_type(info, 4, 0) == 1)
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 4
+						};
+					}
+					else if (check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 4) == 1)
+					{
+						return (command_t) {
+							.action = GUARD,
+							.direction = 4
+						};
+					}
 				}
 				else if (info.row > 12)
 				{
+					if (check_if_type(info, 0, 0) == 1)
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 0
+						};
+					}
+					else if (check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 4) == 1)
+					{
+						return (command_t) {
+							.action = GUARD,
+							.direction = 0
+						};
+					}
+				}
+				else
+				{
 					return (command_t) {
 						.action = MOVE,
-						.direction = 0
+						.direction = rand() % 8
 					};
 				}
+			}
+			else
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = rand() % 8
+				};
 			}
 		}
 		if (info.bee == 3)
@@ -1128,31 +1218,45 @@ command_t follow_strategy(agent_info_t info)
 			{
 				if (info.col < 26)
 				{
-					if (info.col < 10 || info.col > 17)
+					if (info.col < 10 || info.col >= 17)
 					{
 						if (info.row < 21)
 						{
-							if (info.col < 3)
+							if (info.col < 6)
 							{
-								if (check_if_type(info, 3, 0) == 1)
+								if (check_if_type(info, 1, 0) == 1)
+								{
+									return (command_t) {
+										.action = MOVE,
+										.direction = 1
+									};
+								}
+								else if (check_if_type(info, 0, 0) == 1)
+								{
+									return (command_t) {
+										.action = MOVE,
+										.direction = 0
+									};
+								}
+								else if (check_if_type(info, 3, 0) == 1)
 								{
 									return (command_t) {
 										.action = MOVE,
 										.direction = 3
 									};
 								}
-								else if (check_if_type(info, 4, 0) == 1)
+								else if (check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 4) == 1)
 								{
 									return (command_t) {
-										.action = MOVE,
-										.direction = 4
+										.action = GUARD,
+										.direction = 0
 									};
 								}
-								else if (check_if_type(info, 5, 0) == 1 && info.col > 0)
+								else if (check_if_type(info, 1, 6) == 1 || check_if_type(info, 1, 4) == 1)
 								{
 									return (command_t) {
-										.action = MOVE,
-										.direction = 5
+										.action = GUARD,
+										.direction = 1
 									};
 								}
 								else if (check_if_type(info, 3, 6) == 1 || check_if_type(info, 3, 4) == 1)
@@ -1162,25 +1266,11 @@ command_t follow_strategy(agent_info_t info)
 										.direction = 3
 									};
 								}
-								else if (check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 4) == 1)
-								{
-									return (command_t) {
-										.action = GUARD,
-										.direction = 4
-									};
-								}
-								else if (check_if_type(info, 5, 6) == 1 || check_if_type(info, 5, 4) == 1)
-								{
-									return (command_t) {
-										.action = GUARD,
-										.direction = 5
-									};
-								}
 								else
 								{
 									return (command_t) {
 										.action = MOVE,
-										.direction = 3
+										.direction = 1
 									};
 								}
 							}
@@ -1286,8 +1376,57 @@ command_t follow_strategy(agent_info_t info)
 								};
 							}
 						}
+						else if (check_if_type(info, 2, 0) == 1)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 2
+							};
+						}
+						else if (check_if_type(info, 3, 0) == 1)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 3
+							};
+						}
+						else if (check_if_type(info, 1, 0) == 1)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 1
+							};
+						}
+						else if (check_if_type(info, 2, 6) == 1 || check_if_type(info, 2, 4) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 2
+							};
+						}
+						else if (check_if_type(info, 3, 6) == 1 || check_if_type(info, 3, 4) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 3
+							};
+						}
+						else if (check_if_type(info, 1, 6) == 1 || check_if_type(info, 1, 4) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 1
+							};
+						}
+						else
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 2
+							};
+						}
 					}
-					if (info.col == 10 && info.row > 15)
+					else if (info.col == 10 && info.row > 3)
 					{
 						if (check_if_type(info, 0, 0) == 1)
 						{
@@ -1296,7 +1435,7 @@ command_t follow_strategy(agent_info_t info)
 								.direction = 0
 							};
 						}
-						if (check_if_type(info, 0, 6) == 1)
+						else if (check_if_type(info, 0, 6) == 1)
 						{
 							return (command_t) {
 								.action = GUARD,
@@ -1304,16 +1443,16 @@ command_t follow_strategy(agent_info_t info)
 							};
 						}
 					}
-					else if (info.col >= 10 && info.col <= 17 && info.row == 15)
+					else if (info.col >= 10 && info.col < 17 && info.row == 3)
 					{
 						if (check_if_type(info, 2, 0) == 1)
 						{
-						return (command_t) {
-							.action = MOVE,
-							.direction = 2
-						};
+							return (command_t) {
+								.action = MOVE,
+								.direction = 2
+							};
 						}
-						if (check_if_type(info, 2, 6) == 1)
+						else if (check_if_type(info, 2, 6) == 1)
 						{
 							return (command_t) {
 								.action = GUARD,
@@ -1371,14 +1510,14 @@ command_t follow_strategy(agent_info_t info)
 						};
 					}
 				}
-				else if (check_if_type(info, 0, 0) == 1 && info.row > 15)
+				else if (check_if_type(info, 0, 0) == 1 && info.row > 14)
 				{
 					return (command_t) {
 						.action = MOVE,
 						.direction = 0
 					};
 				}
-				else if ((check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 4) == 1) && info.row > 15)
+				else if ((check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 4) == 1) && info.row > 14)
 				{
 					return (command_t) {
 						.action = GUARD,
@@ -1459,7 +1598,7 @@ command_t follow_strategy(agent_info_t info)
 			{
 				if (info.col > 3)
 				{
-					if (info.col < 12 || info.col > 19)
+					if (info.col <= 12 || info.col > 19)
 					{
 						if (info.row > 3)
 						{
@@ -1486,18 +1625,18 @@ command_t follow_strategy(agent_info_t info)
 										.direction = 1
 									};
 								}
-								else if (check_if_type(info, 7, 6) == 1 || check_if_type(info, 7, 3) == 1)
-								{
-									return (command_t) {
-										.action = GUARD,
-										.direction = 7
-									};
-								}
 								else if (check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 3) == 1)
 								{
 									return (command_t) {
 										.action = GUARD,
 										.direction = 0
+									};
+								}
+								else if (check_if_type(info, 7, 6) == 1 || check_if_type(info, 7, 3) == 1)
+								{
+									return (command_t) {
+										.action = GUARD,
+										.direction = 7
 									};
 								}
 								else if (check_if_type(info, 1, 6) == 1 || check_if_type(info, 1, 3) == 1)
@@ -1617,8 +1756,57 @@ command_t follow_strategy(agent_info_t info)
 								};
 							}
 						}
+						else if (check_if_type(info, 6, 0) == 1)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 6
+							};
+						}
+						else if (check_if_type(info, 5, 0) == 1)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 5
+							};
+						}
+						else if (check_if_type(info, 7, 0) == 3)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 7
+							};
+						}
+						else if (check_if_type(info, 6, 6) == 1 || check_if_type(info, 6, 3) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 6
+							};
+						}
+						else if (check_if_type(info, 5, 6) == 1 || check_if_type(info, 5, 3) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 5
+							};
+						}
+						else if (check_if_type(info, 7, 6) == 1 || check_if_type(info, 7, 3) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 7
+							};
+						}
+						else
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 6
+							};
+						}
 					}
-					if (info.col == 19 && info.row < 8)
+					else if (info.col == 19 && info.row < 21)
 					{
 						if (check_if_type(info, 4, 0) == 1)
 						{
@@ -1627,7 +1815,7 @@ command_t follow_strategy(agent_info_t info)
 								.direction = 4
 							};
 						}
-						if (check_if_type(info, 4, 6) == 1)
+						else if (check_if_type(info, 4, 6) == 1)
 						{
 							return (command_t) {
 								.action = GUARD,
@@ -1635,16 +1823,16 @@ command_t follow_strategy(agent_info_t info)
 							};
 						}
 					}
-					else if (info.col >= 12 && info.col <= 19 && info.row == 8)
+					else if (info.col > 12 && info.col <= 19 && info.row == 21)
 					{
 						if (check_if_type(info, 6, 0) == 1)
 						{
-						return (command_t) {
-							.action = MOVE,
-							.direction = 6
-						};
+							return (command_t) {
+								.action = MOVE,
+								.direction = 6
+							};
 						}
-						if (check_if_type(info, 6, 6) == 1)
+						else if (check_if_type(info, 6, 6) == 1)
 						{
 							return (command_t) {
 								.action = GUARD,
@@ -1702,14 +1890,14 @@ command_t follow_strategy(agent_info_t info)
 						};
 					}
 				}
-				else if (check_if_type(info, 4, 0) == 1 && info.row < 9)
+				else if (check_if_type(info, 4, 0) == 1 && info.row < 10)
 				{
 					return (command_t) {
 						.action = MOVE,
 						.direction = 4
 					};
 				}
-				else if ((check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 3) == 1) && info.row < 9)
+				else if ((check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 3) == 1) && info.row < 10)
 				{
 					return (command_t) {
 						.action = GUARD,
@@ -2194,7 +2382,7 @@ command_t follow_strategy(agent_info_t info)
 						};
 					}
 				}
-				else
+				else if (info.row == 12)
 				{
 					if (check_if_type(info, 6, 0) == 1)
 					{
@@ -2239,6 +2427,13 @@ command_t follow_strategy(agent_info_t info)
 						};
 					}
 				}
+				else
+				{
+					return (command_t) {
+						.action = MOVE,
+						.direction = rand() % 8
+					};
+				}
 			}
 			else if (info.col == 2)
 			{
@@ -2268,18 +2463,52 @@ command_t follow_strategy(agent_info_t info)
 				}
 				else if (info.row < 12)
 				{
-					return (command_t) {
-						.action = MOVE,
-						.direction = 4
-					};
+					if (check_if_type(info, 4, 0) == 1)
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 4
+						};
+					}
+					else if (check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 3) == 1)
+					{
+						return (command_t) {
+							.action = GUARD,
+							.direction = 4
+						};
+					}
 				}
 				else if (info.row > 12)
 				{
+					if (check_if_type(info, 0, 0) == 1)
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 0
+						};
+					}
+					else if (check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 3) == 1)
+					{
+						return (command_t) {
+							.action = GUARD,
+							.direction = 0
+						};
+					}
+				}
+				else
+				{
 					return (command_t) {
 						.action = MOVE,
-						.direction = 0
+						.direction = rand() % 8
 					};
 				}
+			}
+			else
+			{
+				return (command_t) {
+					.action = MOVE,
+					.direction = rand() % 8
+				};
 			}
 		}
 		if (info.bee == 3)
@@ -2572,31 +2801,45 @@ command_t follow_strategy(agent_info_t info)
 			{
 				if (info.col > 3)
 				{
-					if (info.col < 12 || info.col > 19)
+					if (info.col <= 12 || info.col > 19)
 					{
 						if (info.row < 21)
 						{
-							if (info.col > 26)
+							if (info.col > 23)
 							{
-								if (check_if_type(info, 5, 0) == 1)
+								if (check_if_type(info, 7, 0) == 1)
+								{
+									return (command_t) {
+										.action = MOVE,
+										.direction = 7
+									};
+								}
+								else if (check_if_type(info, 0, 0) == 1)
+								{
+									return (command_t) {
+										.action = MOVE,
+										.direction = 0
+									};
+								}
+								else if (check_if_type(info, 5, 0) == 1)
 								{
 									return (command_t) {
 										.action = MOVE,
 										.direction = 5
 									};
 								}
-								else if (check_if_type(info, 4, 0) == 1)
+								else if (check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 3) == 1)
 								{
 									return (command_t) {
-										.action = MOVE,
-										.direction = 4
+										.action = GUARD,
+										.direction = 0
 									};
 								}
-								else if (check_if_type(info, 3, 0) == 1 && info.col < 29)
+								else if (check_if_type(info, 1, 6) == 1 || check_if_type(info, 1, 3) == 1)
 								{
 									return (command_t) {
-										.action = MOVE,
-										.direction = 3
+										.action = GUARD,
+										.direction = 1
 									};
 								}
 								else if (check_if_type(info, 5, 6) == 1 || check_if_type(info, 5, 3) == 1)
@@ -2606,25 +2849,11 @@ command_t follow_strategy(agent_info_t info)
 										.direction = 5
 									};
 								}
-								else if (check_if_type(info, 4, 6) == 1 || check_if_type(info, 4, 3) == 1)
-								{
-									return (command_t) {
-										.action = GUARD,
-										.direction = 4
-									};
-								}
-								else if (check_if_type(info, 3, 6) == 1 || check_if_type(info, 3, 3) == 1)
-								{
-									return (command_t) {
-										.action = GUARD,
-										.direction = 3
-									};
-								}
 								else
 								{
 									return (command_t) {
 										.action = MOVE,
-										.direction = 5
+										.direction = 7
 									};
 								}
 							}
@@ -2635,7 +2864,7 @@ command_t follow_strategy(agent_info_t info)
 									.direction = 4
 								};
 							}
-							else if (check_if_type(info, 3, 0) == 1)
+							else if (check_if_type(info, 3, 0) == 1 && info.col < 29)
 							{
 								return (command_t) {
 									.action = MOVE,
@@ -2730,8 +2959,57 @@ command_t follow_strategy(agent_info_t info)
 								};
 							}
 						}
+						else if (check_if_type(info, 6, 0) == 1)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 6
+							};
+						}
+						else if (check_if_type(info, 5, 0) == 1)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 5
+							};
+						}
+						else if (check_if_type(info, 7, 0) == 3)
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 7
+							};
+						}
+						else if (check_if_type(info, 6, 6) == 1 || check_if_type(info, 6, 3) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 6
+							};
+						}
+						else if (check_if_type(info, 5, 6) == 1 || check_if_type(info, 5, 3) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 5
+							};
+						}
+						else if (check_if_type(info, 7, 6) == 1 || check_if_type(info, 7, 3) == 1)
+						{
+							return (command_t) {
+								.action = GUARD,
+								.direction = 7
+							};
+						}
+						else
+						{
+							return (command_t) {
+								.action = MOVE,
+								.direction = 6
+							};
+						}
 					}
-					if (info.col == 19 && info.row > 15)
+					else if (info.col == 19 && info.row > 3)
 					{
 						if (check_if_type(info, 0, 0) == 1)
 						{
@@ -2740,7 +3018,7 @@ command_t follow_strategy(agent_info_t info)
 								.direction = 0
 							};
 						}
-						if (check_if_type(info, 0, 6) == 1)
+						else if (check_if_type(info, 0, 6) == 1)
 						{
 							return (command_t) {
 								.action = GUARD,
@@ -2748,16 +3026,16 @@ command_t follow_strategy(agent_info_t info)
 							};
 						}
 					}
-					else if (info.col >= 12 && info.col <= 19 && info.row == 15)
+					else if (info.col > 12 && info.col <= 19 && info.row == 3)
 					{
 						if (check_if_type(info, 6, 0) == 1)
 						{
-						return (command_t) {
-							.action = MOVE,
-							.direction = 6
-						};
+							return (command_t) {
+								.action = MOVE,
+								.direction = 6
+							};
 						}
-						if (check_if_type(info, 6, 6) == 1)
+						else if (check_if_type(info, 6, 6) == 1)
 						{
 							return (command_t) {
 								.action = GUARD,
@@ -2815,18 +3093,25 @@ command_t follow_strategy(agent_info_t info)
 						};
 					}
 				}
-				else if (check_if_type(info, 0, 0) == 1 && info.row > 15)
+				else if (check_if_type(info, 0, 0) == 1 && info.row > 14)
 				{
 					return (command_t) {
 						.action = MOVE,
 						.direction = 0
 					};
 				}
-				else if ((check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 3) == 1) && info.row > 15)
+				else if ((check_if_type(info, 0, 6) == 1 || check_if_type(info, 0, 3) == 1) && info.row > 14)
 				{
 					return (command_t) {
 						.action = GUARD,
 						.direction = 0
+					};
+				}
+				else if ((check_if_type(info, 0, 1) == 1 || check_if_type(info, 0, 2) == 1 || check_if_type(info, 0, 4) == 1) && check_if_type(info, 2, 0) == 1)
+				{
+					return (command_t) {
+						.action = MOVE,
+						.direction = 2
 					};
 				}
 				else if (free_dir >= 0)
@@ -2841,13 +3126,6 @@ command_t follow_strategy(agent_info_t info)
 					return (command_t) {
 						.action = GUARD,
 						.direction = enemy_dir1
-					};
-				}
-				else if ((check_if_type(info, 0, 1) == 1 || check_if_type(info, 0, 2) == 1 || check_if_type(info, 0, 4) == 1) && check_if_type(info, 2, 0) == 1)
-				{
-					return (command_t) {
-						.action = MOVE,
-						.direction = 2
 					};
 				}
 				else
@@ -2895,11 +3173,8 @@ command_t follow_strategy(agent_info_t info)
 			};
 		}
 	}
-	else
-	{
-		return (command_t) {
-			.action = MOVE,
-			.direction = rand() % 8
-		};
-	}
+	return (command_t) {
+		.action = MOVE,
+		.direction = rand() % 8
+	};
 }

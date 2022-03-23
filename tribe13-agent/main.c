@@ -6,7 +6,7 @@
 /*   By: kaittola <kaittola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:40:53 by kaittola          #+#    #+#             */
-/*   Updated: 2022/03/21 22:29:04 by kaittola         ###   ########.fr       */
+/*   Updated: 2022/03/23 11:13:56 by kaittola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ command_t think(agent_info_t info)
 
 	if (is_bee_with_flower(bee))
 	{
-		coords_t center = {3, 3};
-
 		if (hive_dir >= 0)
 		{
 			return (command_t) {
@@ -35,7 +33,7 @@ command_t think(agent_info_t info)
 	else
 	{
 		int flower_dir = find_neighbour(info, FLOWER, center);
-		if (flower_dir >= 0 && (info.bee == 4 || info.bee == 0 || hive_dir >= 0))
+		if (flower_dir >= 0 && ((info.player == 0 && info.bee > 0 && info.bee < 4 && info.col < 6) || (info.player == 1 && info.bee > 0 && info.bee < 4 && info.col > 23) || info.bee == 0 || info.bee == 4))
 		{
 			return (command_t) {
 				.action = FORAGE,
@@ -43,7 +41,7 @@ command_t think(agent_info_t info)
 			};
 		}
 		flower_dir = find_neighbours(info, FLOWER);
-		if (flower_dir >= 0 && (info.bee == 4 || info.bee == 0))
+		if (flower_dir >= 0 && ((info.player == 0 && info.bee > 0 && info.bee < 4 && info.col < 6) || (info.player == 1 && info.bee > 0 && info.bee < 4 && info.col > 23) || ((info.bee == 0 || info.bee == 4) && info.col > 1 && info.player == 0) || ((info.bee == 0 || info.bee == 4) && info.col < 28 && info.player == 1)))
 		{
 			if (check_if_type(info, flower_dir, EMPTY) == 1)
 			{
@@ -162,7 +160,7 @@ int main(int argc, char **argv)
 
 	char *host = argv[1];
 	int port = atoi(argv[2]);
-	char *team_name = "tribe13_agent_2_electric_boogaloo";
+	char *team_name = "tribe13_agent_3_mama_look_at_mee";
 
 	agent_main(host, port, team_name, think);
 }
