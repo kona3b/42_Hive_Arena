@@ -6,7 +6,7 @@
 /*   By: kaittola <kaittola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:40:53 by kaittola          #+#    #+#             */
-/*   Updated: 2022/03/23 11:13:56 by kaittola         ###   ########.fr       */
+/*   Updated: 2022/03/23 16:13:01 by kaittola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ command_t think(agent_info_t info)
 					.direction = 6
 				};
 			}
-			else if (flower_dir == 6 && check_if_type(info, 0, EMPTY) == 1)
+			else if (flower_dir == 7 && check_if_type(info, 0, EMPTY) == 1)
 			{
 				return (command_t) {
 					.action = MOVE,
@@ -120,7 +120,7 @@ command_t think(agent_info_t info)
 					.direction = 6
 				};
 			}
-			else if (flower_dir == 6 && check_if_type(info, 0, WALL) == 1)
+			else if (flower_dir == 7 && check_if_type(info, 0, WALL) == 1)
 			{
 				return (command_t) {
 					.action = GUARD,
@@ -160,7 +160,7 @@ int main(int argc, char **argv)
 
 	char *host = argv[1];
 	int port = atoi(argv[2]);
-	char *team_name = "tribe13_agent_3_mama_look_at_mee";
+	char *team_name = "tribe13_agent_4_a_new_hope";
 
 	agent_main(host, port, team_name, think);
 }
