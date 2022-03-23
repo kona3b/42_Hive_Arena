@@ -6,7 +6,7 @@
 /*   By: kaittola <kaittola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:40:53 by kaittola          #+#    #+#             */
-/*   Updated: 2022/03/23 16:13:01 by kaittola         ###   ########.fr       */
+/*   Updated: 2022/03/23 17:45:01 by kaittola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ command_t think(agent_info_t info)
 			};
 		}
 		flower_dir = find_neighbours(info, FLOWER);
-		if (flower_dir >= 0 && ((info.player == 0 && info.bee > 0 && info.bee < 4 && info.col < 6) || (info.player == 1 && info.bee > 0 && info.bee < 4 && info.col > 23) || ((info.bee == 0 || info.bee == 4) && info.col > 1 && info.player == 0) || ((info.bee == 0 || info.bee == 4) && info.col < 28 && info.player == 1)))
+		if (flower_dir >= 0 && ((info.player == 0 && info.bee > 0 && info.bee < 4 && info.col < 6) || (info.player == 1 && info.bee > 0 && info.bee < 4 && info.col > 23) || (info.bee == 0 && info.col > 1 && info.player == 0) || (info.bee == 4 && info.col < 28 && info.player == 1)))
 		{
 			if (check_if_type(info, flower_dir, EMPTY) == 1)
 			{
