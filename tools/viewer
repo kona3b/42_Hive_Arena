@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+decomp=gzcat
+
+if ! command -v $decomp >/dev/null; then
+	decomp=zcat
+fi
+
+toolsdir=$(dirname $0)
+lua $toolsdir/viewer.lua <($decomp $1)
