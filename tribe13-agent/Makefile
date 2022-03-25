@@ -1,13 +1,15 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -O3 -flto -v
+CFLAGS=-Wall -Wextra -O3 -flto
 CPPFLAGS=-I../src
 LDFLAGS=-flto -L../bin -lagent
 
 OBJS =	main.o \
 		back_to_hive.o \
 		check_if_type.o \
-		follow_strategy.o \
-		find_neighbours.o
+		find_neighbours.o \
+		endgame.o \
+		second_breakfast.o \
+		first_blood.o \
 
 NAME=agent
 
