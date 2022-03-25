@@ -3,8 +3,11 @@ Hive Arena
 
 Project done in collaboration (at least in spirit) with lasalmi https://github.com/lasalmi and tpontine https://github.com/tpntn
 
+Directories ending in -agent are different versions of agents, you can test them against each other. Tribe13-agent7 was our final version for the final event. tribe13-agent0, tribe13-agent5 and tribe13-agent6 never saw action, neither did wall-builders-agent, they were intended for testing purposes.
 
+Run `./match.sh example-agent example-agent`
 
+----------
 
 A friendly AI competition for the Hive students!
 
