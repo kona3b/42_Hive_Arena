@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   second_breakfast.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kaittola <kaittola@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/25 11:17:41 by kaittola          #+#    #+#             */
+/*   Updated: 2022/03/25 11:25:14 by kaittola         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "tribe13.h"
 
 command_t second_breakfast(agent_info_t info)
@@ -284,11 +296,11 @@ command_t second_breakfast(agent_info_t info)
 						.direction = 4
 					};
 				}
-				else if (enemy_dir1 >= 0)
+				else if (enemy_dir >= 0)
 				{
 					return (command_t) {
 						.action = GUARD,
-						.direction = enemy_dir1
+						.direction = enemy_dir
 					};
 				}
 				else if (free_dir >= 0)
@@ -3250,6 +3262,13 @@ command_t second_breakfast(agent_info_t info)
 					.direction = rand() % 8
 				};
 			}
+		}
+		else
+		{
+			return (command_t) {
+				.action = MOVE,
+				.direction = rand() % 8
+			};
 		}
 	}
 	else

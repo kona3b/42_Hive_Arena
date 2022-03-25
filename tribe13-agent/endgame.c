@@ -4,8 +4,8 @@ command_t endgame(agent_info_t info)
 {
 	coords_t center = {3, 3};
 	int enemy_dir = find_neighbour(info, B1_WF, center);
-	int enemy_dir2 = find_neighbour(info, B0_WF, center);
-	int free_dir = find_neighbour(info, EMPTY, center);
+	int enemy_dir1 = find_neighbour(info, B0_WF, center);
+//	int free_dir = find_neighbour(info, EMPTY, center);
 
 	if (info.player == 0)
 	{
@@ -239,6 +239,13 @@ command_t endgame(agent_info_t info)
 						return (command_t) {
 							.action = GUARD,
 							.direction = 5
+						};
+					}
+					else
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 6
 						};
 					}
 				}
@@ -567,6 +574,13 @@ command_t endgame(agent_info_t info)
 							.direction = 5
 						};
 					}
+					else
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 6
+						};
+					}
 				}
 				else if (check_if_type(info, 4, 0) == 1 && info.row < 11)
 				{
@@ -891,6 +905,13 @@ command_t endgame(agent_info_t info)
 						return (command_t) {
 							.action = GUARD,
 							.direction = 5
+						};
+					}
+					else
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 6
 						};
 					}
 				}
@@ -1219,6 +1240,13 @@ command_t endgame(agent_info_t info)
 							.direction = 5
 						};
 					}
+					else
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 6
+						};
+					}
 				}
 				else if (check_if_type(info, 4, 0) == 1 && info.row < 13)
 				{
@@ -1545,6 +1573,13 @@ command_t endgame(agent_info_t info)
 							.direction = 5
 						};
 					}
+					else
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 6
+						};
+					}
 				}
 				else if (check_if_type(info, 4, 0) == 1 && info.row < 14)
 				{
@@ -1638,6 +1673,13 @@ command_t endgame(agent_info_t info)
 					.direction = rand() % 8
 				};
 			}
+		}
+		else
+		{
+			return (command_t) {
+				.action = MOVE,
+				.direction = rand() % 8
+			};
 		}
 	}
 	if (info.player == 1)
@@ -1874,6 +1916,13 @@ command_t endgame(agent_info_t info)
 							.direction = 3
 						};
 					}
+					else
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 2
+						};
+					}
 				}
 				else if (check_if_type(info, 4, 0) == 1 && info.row < 10)
 				{
@@ -1903,11 +1952,11 @@ command_t endgame(agent_info_t info)
 						.direction = 0
 					};
 				}
-				else if (enemy_dir >= 0)
+				else if (enemy_dir1 >= 0)
 				{
 					return (command_t) {
 						.action = GUARD,
-						.direction = enemy_dir
+						.direction = enemy_dir1
 					};
 				}
 				else if (check_if_type(info, 7, 0) == 1)
@@ -2200,6 +2249,13 @@ command_t endgame(agent_info_t info)
 							.direction = 3
 						};
 					}
+					else
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 2
+						};
+					}
 				}
 				else if (check_if_type(info, 4, 0) == 1 && info.row < 11)
 				{
@@ -2229,11 +2285,11 @@ command_t endgame(agent_info_t info)
 						.direction = 0
 					};
 				}
-				else if (enemy_dir >= 0)
+				else if (enemy_dir1 >= 0)
 				{
 					return (command_t) {
 						.action = GUARD,
-						.direction = enemy_dir
+						.direction = enemy_dir1
 					};
 				}
 				else if (check_if_type(info, 7, 0) == 1)
@@ -2526,6 +2582,13 @@ command_t endgame(agent_info_t info)
 							.direction = 3
 						};
 					}
+					else
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 2
+						};
+					}
 				}
 				else if (check_if_type(info, 4, 0) == 1 && info.row < 12)
 				{
@@ -2555,11 +2618,11 @@ command_t endgame(agent_info_t info)
 						.direction = 0
 					};
 				}
-				else if (enemy_dir >= 0)
+				else if (enemy_dir1 >= 0)
 				{
 					return (command_t) {
 						.action = GUARD,
-						.direction = enemy_dir
+						.direction = enemy_dir1
 					};
 				}
 				else if (check_if_type(info, 7, 0) == 1)
@@ -2852,6 +2915,13 @@ command_t endgame(agent_info_t info)
 							.direction = 3
 						};
 					}
+					else
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 2
+						};
+					}
 				}
 				else if (check_if_type(info, 4, 0) == 1 && info.row < 13)
 				{
@@ -2881,11 +2951,11 @@ command_t endgame(agent_info_t info)
 						.direction = 0
 					};
 				}
-				else if (enemy_dir >= 0)
+				else if (enemy_dir1 >= 0)
 				{
 					return (command_t) {
 						.action = GUARD,
-						.direction = enemy_dir
+						.direction = enemy_dir1
 					};
 				}
 				else if (check_if_type(info, 7, 0) == 1)
@@ -3178,6 +3248,13 @@ command_t endgame(agent_info_t info)
 							.direction = 3
 						};
 					}
+					else
+					{
+						return (command_t) {
+							.action = MOVE,
+							.direction = 2
+						};
+					}
 				}
 				else if (check_if_type(info, 4, 0) == 1 && info.row < 14)
 				{
@@ -3207,11 +3284,11 @@ command_t endgame(agent_info_t info)
 						.direction = 0
 					};
 				}
-				else if (enemy_dir >= 0)
+				else if (enemy_dir1 >= 0)
 				{
 					return (command_t) {
 						.action = GUARD,
-						.direction = enemy_dir
+						.direction = enemy_dir1
 					};
 				}
 				else if (check_if_type(info, 7, 0) == 1)
@@ -3271,6 +3348,13 @@ command_t endgame(agent_info_t info)
 					.direction = rand() % 8
 				};
 			}
+		}
+		else
+		{
+			return (command_t) {
+				.action = MOVE,
+				.direction = rand() % 8
+			};
 		}
 	}
 	else

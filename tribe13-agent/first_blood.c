@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   first_blood.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kaittola <kaittola@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/25 11:16:59 by kaittola          #+#    #+#             */
+/*   Updated: 2022/03/25 11:24:54 by kaittola         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "tribe13.h"
 
 command_t first_blood(agent_info_t info)
@@ -334,7 +346,7 @@ command_t first_blood(agent_info_t info)
 					.direction = 6
 				};
 			}
-				else if (check_if_type(info, 0, 0) && (check_if_type(info, 6, 1) == 1 || check_if_type(info, 6, 2) == 1 || check_if_type(info, 6, 3) == 1))
+			else if (check_if_type(info, 0, 0) && (check_if_type(info, 6, 1) == 1 || check_if_type(info, 6, 2) == 1 || check_if_type(info, 6, 3) == 1))
 				{
 					return (command_t) {
 						.action = MOVE,
@@ -3320,6 +3332,13 @@ command_t first_blood(agent_info_t info)
 					.direction = rand() % 8
 				};
 			}
+		}
+		else
+		{
+			return (command_t) {
+				.action = MOVE,
+				.direction = rand() % 8
+			};
 		}
 	}
 	else

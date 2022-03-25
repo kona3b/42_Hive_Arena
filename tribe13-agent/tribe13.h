@@ -19,6 +19,7 @@ int	check_if_type(agent_info_t info, int dir, int type);
 int find_neighbour(agent_info_t info, cell_t type, coords_t center);
 int find_neighbours(agent_info_t info, cell_t type);
 command_t back_to_hive(agent_info_t info);
+command_t back_to_hive2(agent_info_t info);
 command_t endgame(agent_info_t info);
 command_t second_breakfast(agent_info_t info);
 command_t first_blood(agent_info_t info);

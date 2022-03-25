@@ -5,6 +5,7 @@ LDFLAGS=-flto -L../bin -lagent
 
 OBJS =	main.o \
 		back_to_hive.o \
+		back_to_hive2.o \
 		check_if_type.o \
 		find_neighbours.o \
 		endgame.o \

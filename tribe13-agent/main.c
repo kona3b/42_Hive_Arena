@@ -6,7 +6,7 @@
 /*   By: kaittola <kaittola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:40:53 by kaittola          #+#    #+#             */
-/*   Updated: 2022/03/25 05:02:05 by kaittola         ###   ########.fr       */
+/*   Updated: 2022/03/25 11:43:59 by kaittola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ command_t think(agent_info_t info)
 				.direction = hive_dir
 			};
 		}
-		else
+		else if (info.turn < 800)
 			return (back_to_hive(info));
+		else
+			return (back_to_hive2(info));
 	}
 	else if (info.turn < 70)//FIRST_BLOOD
 		return (second_breakfast(info));
