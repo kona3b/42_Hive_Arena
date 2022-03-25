@@ -1,6 +1,11 @@
 Hive Arena
 ==========
 
+Project done in collaboration (at least in spirit) with lasalmi https://github.com/lasalmi and tpontine https://github.com/tpntn
+
+
+
+
 A friendly AI competition for the Hive students!
 
 ![Viewer screenshot](viewer-screenshot.png)
