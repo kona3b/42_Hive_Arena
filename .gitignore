@@ -1,3 +1,4 @@
 agent
 bin
 *.o
+*.DS_Store
